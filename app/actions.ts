@@ -26,7 +26,12 @@ export async function toggleTodo(
   id: number,
   completed: boolean,
 ): Promise<boolean> {
-  await db.update(todos).set({ completed }).where(eq(todos.id, id));
+  const [updated] = await db
+    .update(todos)
+    .set({ completed })
+    .where(eq(todos.id, id))
+    .returning({ completed: todos.completed });
+
   revalidatePath("/");
-  return completed;
+  return updated?.completed ?? false;
 }
