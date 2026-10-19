@@ -19,7 +19,7 @@ function TodoListFallback() {
 
 export default function Home() {
   return (
-    <div className="flex min-h-full flex-1 items-start justify-center bg-gradient-to-b from-violet-50/80 to-zinc-50 px-4 py-16 dark:from-violet-950/20 dark:to-black">
+    <div className="flex min-h-full flex-1 items-start justify-center bg-linear-to-b from-violet-50/80 to-zinc-50 px-4 py-16 dark:from-violet-950/20 dark:to-black">
       <Suspense fallback={<TodoListFallback />}>
         <TodoList />
       </Suspense>
